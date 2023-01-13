@@ -1,4 +1,6 @@
 <script lang="ts">
+	import NumInput from '$lib/NumInput.svelte';
+
 	let expenses: number;
 
 	const handleSubmit = () => {};
@@ -11,9 +13,10 @@
 <br />
 
 <form on:submit|preventDefault={handleSubmit}>
-	<label for="expenses">
-		<span>Yearly Expenses:</span>
-		<input type="number" id="expenses" bind:value={expenses} required />
-	</label>
+	<NumInput
+		inputAttributes={{ id: 'expenses', required: true }}
+		labelText="Yearly Expenses:"
+		bind:value={expenses}
+	/>
 	<button class="btn btn-filled-primary">Submit</button>
 </form>
