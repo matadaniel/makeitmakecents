@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@felte/reporter-svelte': ^1.1.5
   '@felte/validator-zod': ^1.0.13
   '@playwright/test': ^1.28.1
   '@skeletonlabs/skeleton': ^0.86.9
@@ -29,6 +30,7 @@ specifiers:
   zod: ^3.20.2
 
 dependencies:
+  '@felte/reporter-svelte': 1.1.5_svelte@3.55.0
   '@felte/validator-zod': 1.0.13_zod@3.20.2
   felte: 1.2.7_svelte@3.55.0
   zod: 3.20.2
@@ -285,6 +287,16 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       '@felte/common': 1.1.4
+    dev: false
+
+  /@felte/reporter-svelte/1.1.5_svelte@3.55.0:
+    resolution: {integrity: sha512-emV9eYpN6/JcUP5sDXC3zPFdTnEp4Tw3G7KyT/cSg9MSnhYz+6ZW7eBEGsFSS0dJHocIliZPk+T4ROKdQgFG+w==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    peerDependencies:
+      svelte: ^3.31.0
+    dependencies:
+      '@felte/common': 1.1.4
+      svelte: 3.55.0
     dev: false
 
   /@felte/validator-zod/1.0.13_zod@3.20.2:
