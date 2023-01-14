@@ -1,9 +1,19 @@
 <script lang="ts">
 	import NumInput from '$lib/NumInput.svelte';
+	import { reporter } from '@felte/reporter-svelte';
+	import { validator } from '@felte/validator-zod';
+	import { createForm } from 'felte';
+	import { z } from 'zod';
 
-	let expenses: number;
+	const schema = z.object({
+		expenses: z.number().nonnegative(),
+		savings: z.number().nonnegative()
+	});
 
-	const handleSubmit = () => {};
+	const { form } = createForm<z.infer<typeof schema>>({
+		onSubmit: () => {},
+		extend: [validator({ schema }), reporter]
+	});
 </script>
 
 <h1>Congratulations!!</h1>
@@ -12,11 +22,8 @@
 
 <br />
 
-<form on:submit|preventDefault={handleSubmit}>
-	<NumInput
-		inputAttributes={{ id: 'expenses', required: true }}
-		labelText="Yearly Expenses:"
-		bind:value={expenses}
-	/>
+<form use:form>
+	<NumInput inputAttributes={{ id: 'expenses', required: true }} labelText="Yearly Expenses:" />
+	<NumInput inputAttributes={{ id: 'savings', required: true }} labelText="Current Savings:" />
 	<button class="btn btn-filled-primary">Submit</button>
 </form>
