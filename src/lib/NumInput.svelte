@@ -11,7 +11,7 @@
 	<span>{labelText}</span>
 	<ValidationMessage for={inputAttributes.id} let:messages>
 		{#if messages}<span class="text-error-700">{messages}</span>{/if}
-		<slot name="placeholder" slot="placeholder" />
+		<slot name="placeholder" slot="placeholder" {value} />
 	</ValidationMessage>
 	<input type="number" bind:value name={inputAttributes.id} {...inputAttributes} />
 </label>
