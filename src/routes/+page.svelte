@@ -23,7 +23,25 @@
 <br />
 
 <form use:form>
-	<NumInput inputAttributes={{ id: 'expenses', required: true }} labelText="Yearly Expenses:" />
-	<NumInput inputAttributes={{ id: 'savings', required: true }} labelText="Current Savings:" />
+	<NumInput
+		inputAttributes={{ id: 'expenses', required: true }}
+		labelText="Yearly Expenses:"
+		let:value
+	>
+		{#if typeof value === 'number'}<span
+				>{value.toLocaleString(undefined, { style: 'currency', currency: 'XXX' })}</span
+			>{/if}
+	</NumInput>
+
+	<NumInput
+		inputAttributes={{ id: 'savings', required: true }}
+		labelText="Current Savings:"
+		let:value
+	>
+		{#if typeof value === 'number'}<span
+				>{value.toLocaleString(undefined, { style: 'currency', currency: 'XXX' })}</span
+			>{/if}
+	</NumInput>
+
 	<button class="btn btn-filled-primary">Submit</button>
 </form>
