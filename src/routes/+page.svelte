@@ -26,14 +26,14 @@
 
 			const inflation = 0.0198 / 12;
 
-			let total = deposit + savings;
+			let balance = deposit + savings;
 
 			let months = 0;
 			const maxMonths = 12 * 81;
-			while (total - expenses >= 0 && months < maxMonths) {
-				total -= expenses;
+			while (balance - expenses >= 0 && months < maxMonths) {
+				balance -= expenses;
 				expenses *= 1 + inflation;
-				total *= 1 + returns;
+				balance *= 1 + returns;
 				months++;
 			}
 			console.log(
