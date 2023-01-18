@@ -10,8 +10,38 @@
 		savings: z.number().nonnegative()
 	});
 
+	let deposit = 100000;
+
 	const { form } = createForm<z.infer<typeof schema>>({
-		onSubmit: () => {},
+		onSubmit: ({ expenses, savings }) => {
+			// https://ssrn.com/abstract=3964908
+
+			expenses /= 12;
+
+			const stockReturns = 0.0075;
+			const bondReturns = 0.0048;
+			const stockWeight = 0.6;
+			const bondWeight = 0.4;
+			const returns = stockReturns * stockWeight + bondReturns * bondWeight;
+
+			const inflation = 0.0198 / 12;
+
+			let total = deposit + savings;
+
+			let months = 0;
+			const maxMonths = 12 * 81;
+			while (total - expenses >= 0 && months < maxMonths) {
+				total -= expenses;
+				expenses *= 1 + inflation;
+				total *= 1 + returns;
+				months++;
+			}
+			console.log(
+				Math.trunc(months / 12),
+				' years',
+				months % 12 > 0 ? ` and ${months % 12} months` : ''
+			);
+		},
 		extend: [validator({ schema }), reporter]
 	});
 </script>
