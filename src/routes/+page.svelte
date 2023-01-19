@@ -1,5 +1,6 @@
 <script lang="ts">
 	import NumInput from '$lib/NumInput.svelte';
+	import { currency } from '$lib/stores';
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
 	import { createForm } from 'felte';
@@ -59,7 +60,7 @@
 		let:value
 	>
 		{#if typeof value === 'number'}<span
-				>{value.toLocaleString(undefined, { style: 'currency', currency: 'XXX' })}</span
+				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
 			>{/if}
 	</NumInput>
 
@@ -69,7 +70,7 @@
 		let:value
 	>
 		{#if typeof value === 'number'}<span
-				>{value.toLocaleString(undefined, { style: 'currency', currency: 'XXX' })}</span
+				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
 			>{/if}
 	</NumInput>
 
