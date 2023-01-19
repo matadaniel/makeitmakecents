@@ -224,7 +224,7 @@
 <!-- Tooltip -->
 {#if dotInfo}
 	<div
-		class="tooltip"
+		class="tooltip-svend3r"
 		style="position:absolute; left:{dotInfo[2].clientX + 12}px; top:{dotInfo[2].clientY +
 			12}px; pointer-events:none; background-color:{tooltipBackground}; color:{tooltipTextColor}"
 	>
@@ -278,7 +278,7 @@
 		text-anchor: start;
 	}
 
-	.tooltip {
+	.tooltip-svend3r {
 		border-radius: 5px;
 		padding: 5px;
 		box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
