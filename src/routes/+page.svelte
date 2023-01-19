@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AreaChart from '$lib/AreaChart.svelte';
 	import NumInput from '$lib/NumInput.svelte';
 	import { currency } from '$lib/stores';
 	import { reporter } from '@felte/reporter-svelte';
@@ -12,6 +13,7 @@
 	});
 
 	let deposit = 100000;
+	let data: { id: string; data: { month: Date; total: number }[] }[];
 
 	const { form } = createForm<z.infer<typeof schema>>({
 		onSubmit: ({ expenses, savings }) => {
@@ -29,14 +31,26 @@
 
 			let balance = deposit + savings;
 
+			const date = new Date();
+			const currentMonth = date.getMonth();
+
 			let months = 0;
 			const maxMonths = 12 * 81;
+			const expensesData: (typeof data)[number] = { id: 'expenses', data: [] };
+			const balanceData: (typeof data)[number] = { id: 'balance', data: [] };
 			while (balance - expenses >= 0 && months < maxMonths) {
+				const month = new Date(date);
+				month.setMonth(currentMonth + months);
+				expensesData.data.push({ month, total: expenses });
+				balanceData.data.push({ month, total: balance });
+
 				balance -= expenses;
 				expenses *= 1 + inflation;
 				balance *= 1 + returns;
 				months++;
 			}
+
+			data = [expensesData, balanceData];
 			console.log(
 				Math.trunc(months / 12),
 				' years',
@@ -76,3 +90,5 @@
 
 	<button class="btn btn-filled-primary">Submit</button>
 </form>
+
+{#key data}{#if data}<AreaChart {data} />{/if}{/key}
