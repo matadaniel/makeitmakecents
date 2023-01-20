@@ -16,7 +16,7 @@
 	const xFormat = ''; // a format specifier string for the y-axis
 	const yFormat = ''; // a format specifier string for the y-axis
 	const horizontalGrid = true; // show horizontal grid lines
-	const verticalGrid = false; // show vertical grid lines
+	const verticalGrid = true; // show vertical grid lines
 	const colors = ['red', 'blue', 'green', 'yellow']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
 	const showDots = false; // whether dots should be displayed
 	const dotsFilled = false; // whether dots should be filled or outlined
@@ -113,7 +113,9 @@
 	const voronoiGrid = delaunayGrid.voronoi([0, 0, width, height]);
 
 	const xTicks = xScale.ticks(xScalefactor);
-	const xTicksFormatted = xTicks.map((el) => el.getFullYear());
+	const xTicksFormatted = xTicks.map((el) =>
+		el.toLocaleDateString(undefined, { month: '2-digit', year: '2-digit' })
+	);
 	const yTicks = niceY.ticks(yScalefactor);
 </script>
 
@@ -210,7 +212,7 @@
 					{#if verticalGrid}
 						<line class="tick-grid" y2={-height} />
 					{/if}
-					<text font-size="8px" x={-marginLeft / 4} y="20">{xTicksFormatted[i] + xFormat}</text>
+					<text font-size="10px" x="-12" y="20">{xTicksFormatted[i] + xFormat}</text>
 				</g>
 			{/each}
 			<text x={width - marginLeft - marginRight - 40} y={marginBottom}>{xLabel}</text>
@@ -236,8 +238,12 @@
 			12}px; pointer-events:none; background-color:{tooltipBackground}; color:{tooltipTextColor}"
 	>
 		{subsets ? subsets[points[dotInfo[1]].color] : ''}:
-		{points[dotInfo[1]].x.getFullYear()}: {points[dotInfo[1]].y.toFixed(2)}{yFormat}
-		<!-- {points[dotInfo[1]].x.toLocaleDateString('en-US')} {points[dotInfo[1]].y.toFixed(2)}{yFormat} -->
+		<!-- {points[dotInfo[1]].x.getFullYear()}: {points[dotInfo[1]].y.toFixed(2)}{yFormat} -->
+		{points[dotInfo[1]].x.toLocaleDateString(undefined, { month: '2-digit', year: '2-digit' })}:
+		{points[dotInfo[1]].y.toLocaleString(undefined, {
+			style: 'currency',
+			currency: $currency
+		})}{yFormat}
 	</div>
 {/if}
 
