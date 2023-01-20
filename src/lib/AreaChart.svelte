@@ -1,19 +1,20 @@
 <!-- Shoutout to Svend3r! -->
 <script lang="ts">
 	import { area, curveLinear, Delaunay, range, scaleLinear, scaleUtc } from 'd3';
+	import { currency } from './stores';
 	export let data: { id: string; data: { month: Date; total: number }[] }[];
 
 	const marginTop = 40; // the top margin, in pixels
 	const marginRight = 10; // the right margin, in pixels
 	const marginBottom = 30; // the bottom margin, in pixels
-	const marginLeft = 50; // the left margin, in pixels
+	const marginLeft = 90; // the left margin, in pixels
 	const inset = 0; // inset the default range, in pixels
 	const width = 600; // the outer width of the chart, in pixels
 	const height = 350; // the outer height of the chart, in pixels
 	const xLabel = ''; // a label for the y-axis
-	const yLabel = '↑ Population (in millions)'; // a label for the y-axis
+	const yLabel = ''; // a label for the y-axis
 	const xFormat = ''; // a format specifier string for the y-axis
-	const yFormat = 'm'; // a format specifier string for the y-axis
+	const yFormat = ''; // a format specifier string for the y-axis
 	const horizontalGrid = true; // show horizontal grid lines
 	const verticalGrid = false; // show vertical grid lines
 	const colors = ['red', 'blue', 'green', 'yellow']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
@@ -185,7 +186,13 @@
 					{#if horizontalGrid}
 						<line class="tick-grid" x1={insetLeft} x2={width - marginLeft - marginRight} />
 					{/if}
-					<text text-align="right" x="-{marginLeft}" y="5">{tick + yFormat}</text>
+					<text text-align="right" x="-{marginLeft}" y="5"
+						>{tick.toLocaleString(undefined, {
+							style: 'currency',
+							currency: $currency,
+							maximumFractionDigits: 0
+						}) + yFormat}</text
+					>
 				</g>
 			{/each}
 			<text x="-{marginLeft}" y={marginTop - 10}>{yLabel}</text>
