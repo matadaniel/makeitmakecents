@@ -38,16 +38,19 @@
 			const maxMonths = 12 * 81;
 			const expensesData: (typeof data)[number] = { id: 'expenses', data: [] };
 			const balanceData: (typeof data)[number] = { id: 'balance', data: [] };
+			const month = new Date(date);
+			expensesData.data.push({ month, total: expenses });
+			balanceData.data.push({ month, total: balance });
 			while (balance - expenses >= 0 && months < maxMonths) {
-				const month = new Date(date);
-				month.setMonth(currentMonth + months);
-				expensesData.data.push({ month, total: expenses });
-				balanceData.data.push({ month, total: balance });
-
 				balance -= expenses;
 				expenses *= 1 + inflation;
 				balance *= 1 + returns;
 				months++;
+
+				const month = new Date(date);
+				month.setMonth(currentMonth + months);
+				expensesData.data.push({ month, total: expenses });
+				balanceData.data.push({ month, total: balance });
 			}
 
 			data = [expensesData, balanceData];
