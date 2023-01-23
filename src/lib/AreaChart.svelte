@@ -17,7 +17,7 @@
 	const yFormat = ''; // a format specifier string for the y-axis
 	const horizontalGrid = true; // show horizontal grid lines
 	const verticalGrid = true; // show vertical grid lines
-	const colors = ['red', 'blue', 'green', 'yellow']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
+	const colors = ['blue', 'green']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
 	const showDots = false; // whether dots should be displayed
 	const dotsFilled = false; // whether dots should be filled or outlined
 	const r = 3; // (fixed) radius of dots, in pixels
@@ -212,7 +212,7 @@
 					{#if verticalGrid}
 						<line class="tick-grid" y2={-height} />
 					{/if}
-					<text font-size="10px" x="-12" y="20">{xTicksFormatted[i] + xFormat}</text>
+					<text font-size="14px" x="-17" y="20">{xTicksFormatted[i] + xFormat}</text>
 				</g>
 			{/each}
 			<text x={width - marginLeft - marginRight - 40} y={marginBottom}>{xLabel}</text>
@@ -251,8 +251,8 @@
 	.chart-container {
 		justify-content: center;
 		align-items: center;
-		margin-top: 50px;
-		margin-left: 8 0px;
+		margin-top: 25px;
+		margin-left: 8px;
 	}
 	svg {
 		max-width: 100%;
