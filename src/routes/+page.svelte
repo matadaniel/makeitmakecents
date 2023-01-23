@@ -78,7 +78,7 @@
 	>
 		{#if typeof value === 'number'}<span
 				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
-			>{/if}
+			>{:else}<div class="placeholder w-24 mb-2 animate-pulse" />{/if}
 	</NumInput>
 
 	<NumInput
@@ -88,7 +88,7 @@
 	>
 		{#if typeof value === 'number'}<span
 				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
-			>{/if}
+			>{:else}<div class="placeholder w-24 mb-2 animate-pulse" />{/if}
 	</NumInput>
 
 	<button class="btn btn-filled-primary">Submit</button>
