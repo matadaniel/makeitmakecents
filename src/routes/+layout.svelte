@@ -6,7 +6,7 @@
 	import { AppShell } from '@skeletonlabs/skeleton';
 </script>
 
-<AppShell>
+<AppShell slotPageContent="flex flex-col items-center mt-24" slotPageFooter="mt-24 mx-3 mb-3">
 	<slot />
 
 	<svelte:fragment slot="pageFooter">

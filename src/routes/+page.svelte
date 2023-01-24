@@ -63,16 +63,19 @@
 	});
 </script>
 
-<h1>Congratulations!!</h1>
-<h2>An oil prince has just deposited $100,000 into your bank account!</h2>
-<p>
+<h1 class="mb-8">Congratulations!!</h1>
+<h2 class="mb-8">An oil prince has just deposited $100,000 into your bank account!</h2>
+<p class="mb-8">
 	Are you able to sleep in tomorrow? And the day after that, and the day after that, and the day
 	after that...
 </p>
 
 <br />
 
-<form use:form>
+<form
+	use:form
+	class="w-96 mt-8 p-5 grid grid-cols-1 gap-14 border-token rounded-container-token border-primary-500"
+>
 	<NumInput
 		inputAttributes={{ id: 'expenses', required: true }}
 		labelText="Yearly Expenses:"
@@ -96,7 +99,7 @@
 	<button class="btn btn-filled-primary">Submit</button>
 </form>
 
-<div class="card flex flex-col items-center my-16">
+<div class="card flex flex-col items-center my-16 p-4">
 	{#key data}
 		{#if data}
 			{@const months = data[0].data.length - 1}
