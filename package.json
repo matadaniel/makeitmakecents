@@ -46,7 +46,7 @@
 	"type": "module",
 	"dependencies": {
 		"@felte/reporter-svelte": "^1.1.11",
-		"@felte/validator-zod": "^1.0.13",
+		"@felte/validator-zod": "^1.0.17",
 		"d3": "^7.8.2",
 		"felte": "^1.2.7",
 		"zod": "^3.20.2"
