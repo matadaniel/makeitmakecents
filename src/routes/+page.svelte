@@ -4,7 +4,6 @@
 	import { currency } from '$lib/stores';
 	import { reporter } from '@felte/reporter-svelte';
 	import { validator } from '@felte/validator-zod';
-	import { tooltip } from '@skeletonlabs/skeleton';
 	import { createForm } from 'felte';
 	import { z } from 'zod';
 
@@ -106,19 +105,8 @@
 
 			<header class="card-header">
 				<p class="unstyled text-center text-3xl font-medium">
-					Your money should <a href="https://ssrn.com/abstract=3964908"
-						><i
-							use:tooltip={{
-								content: `<p>60% stocks / 40% bonds</p>
-<p>2% inflation</p>
-<p>
-	Average nominal return data:<br />
-	https://ssrn.com/abstract=3964908
-</p>`,
-								width: '!w-72'
-							}}>theoretically</i
-						></a
-					><br />last you {#if months > 11}{`${Math.trunc(months / 12)} year${
+					Your money should <a href="https://ssrn.com/abstract=3964908"><i>theoretically</i></a><br
+					/>last you {#if months > 11}{`${Math.trunc(months / 12)} year${
 							months > 23 ? 's' : ''
 						} and `}{/if}{`${months % 12} ${
 						months % 12 === 1 ? 'month' : 'months'
