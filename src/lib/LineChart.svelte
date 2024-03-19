@@ -16,7 +16,8 @@
 	const yFormat = 'm'; // a format specifier string for the y-axis
 	const horizontalGrid = true; // show horizontal grid lines
 	const verticalGrid = true; // show vertical grid lines
-	const colors = ['#F50057', '#42A5F5', '#26A69A', '#9575CD']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
+	const svend3rColors = ['#F50057', '#42A5F5', '#26A69A', '#9575CD']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
+	const colors = data.map((_value, index) => svend3rColors[index % 4]); // number of colors in fill array WILL match number of subsets in data
 	const showDots = true; // whether dots should be displayed
 	const dotsFilled = true; // whether dots should be filled or outlined
 	const r = 5; // (fixed) radius of dots, in pixels
