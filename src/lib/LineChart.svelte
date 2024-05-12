@@ -1,30 +1,30 @@
 <!-- Shoutout to Svend3r! -->
 <script lang="ts">
-	import { line, curveLinear, Delaunay, range, scaleLinear, scaleUtc } from 'd3';
+	import { Delaunay, curveLinear, line, range, scaleLinear, scaleUtc } from 'd3';
 	export let data: { id: string; data: { month: Date; total: number }[] }[];
 
-	const marginTop = 40; // the top margin, in pixels
-	const marginRight = 0; // the right margin, in pixels
-	const marginBottom = 30; // the bottom margin, in pixels
-	const marginLeft = 50; // the left margin, in pixels
-	const inset = 0; // inset the default range, in pixels
-	const width = 600; // the outer width of the chart, in pixels
-	const height = 350; // the outer height of the chart, in pixels
-	const xLabel = ''; // a label for the y-axis
-	const yLabel = '↑ Population (in millions)'; // a label for the y-axis
-	const xFormat = ''; // a format specifier string for the y-axis
-	const yFormat = 'm'; // a format specifier string for the y-axis
-	const horizontalGrid = true; // show horizontal grid lines
-	const verticalGrid = true; // show vertical grid lines
-	const svend3rColors = ['#F50057', '#42A5F5', '#26A69A', '#9575CD']; // fill color for dots && number of colors in fill array MUST match number of subsets in data
-	const colors = data.map((_value, index) => svend3rColors[index % 4]); // number of colors in fill array WILL match number of subsets in data
-	const showDots = true; // whether dots should be displayed
-	const dotsFilled = true; // whether dots should be filled or outlined
-	const r = 5; // (fixed) radius of dots, in pixels
-	const strokeWidth = 5; // stroke width of line, in pixels
-	const strokeOpacity = 0.8; // stroke opacity of line
-	const tooltipBackground = 'white'; // background color of tooltip
-	const tooltipTextColor = 'black'; // text color of tooltip
+	export let marginTop: number; // the top margin, in pixels
+	export let marginRight: number; // the right margin, in pixels
+	export let marginBottom: number; // the bottom margin, in pixels
+	export let marginLeft: number; // the left margin, in pixels
+	export let inset: number; // inset the default range, in pixels
+	export let width: number; // the outer width of the chart, in pixels
+	export let height: number; // the outer height of the chart, in pixels
+	export let xLabel: string; // a label for the y-axis
+	export let yLabel: string; // a label for the y-axis
+	export let xFormat: string; // a format specifier string for the y-axis
+	export let yFormat: string; // a format specifier string for the y-axis
+	export let horizontalGrid: boolean; // show horizontal grid lines
+	export let verticalGrid: boolean; // show vertical grid lines
+	export let svend3rColors: string[]; // fill color for dots && number of colors in fill array MUST match number of subsets in data
+	const colors = data.map((_value, index) => svend3rColors[index % svend3rColors.length]); // number of colors in fill array WILL match number of subsets in data
+	export let showDots: boolean; // whether dots should be displayed
+	export let dotsFilled: boolean; // whether dots should be filled or outlined
+	export let r: number; // (fixed) radius of dots, in pixels
+	export let strokeWidth: number; // stroke width of line, in pixels
+	export let strokeOpacity: number; // stroke opacity of line
+	export let tooltipBackground: string; // background color of tooltip
+	export let tooltipTextColor: string; // text color of tooltip
 	const strokeLinecap = 'round'; // stroke line cap of the line
 	const strokeLinejoin = 'round'; // stroke line join of the line
 	const xScalefactor = width / 80; //y-axis number of values
