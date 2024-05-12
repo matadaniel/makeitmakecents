@@ -8,7 +8,10 @@
 
 <Modal />
 
-<AppShell slotPageContent="flex flex-col items-center mt-24" slotPageFooter="mt-24 mx-3 mb-3">
+<AppShell
+	slotPageContent="flex flex-col items-center mt-24 min-h-screen"
+	slotPageFooter="mt-24 mx-3 mb-3"
+>
 	<slot />
 
 	<svelte:fragment slot="pageFooter">
