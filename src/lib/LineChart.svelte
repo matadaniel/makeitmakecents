@@ -12,8 +12,8 @@
 	export let height: number; // the outer height of the chart, in pixels
 	export let xLabel: string; // a label for the y-axis
 	export let yLabel: string; // a label for the y-axis
-	export let xFormat: string; // a format specifier string for the y-axis
-	export let yFormat: string; // a format specifier string for the y-axis
+	export let xFormat: (n: number | { valueOf(): number }) => string; // a format specifier string for the y-axis
+	export let yFormat: (n: number | { valueOf(): number }) => string; // a format specifier string for the y-axis
 	export let horizontalGrid: boolean; // show horizontal grid lines
 	export let verticalGrid: boolean; // show vertical grid lines
 	export let svend3rColors: string[]; // fill color for dots && number of colors in fill array MUST match number of subsets in data
@@ -188,7 +188,7 @@
 					{#if horizontalGrid}
 						<line class="tick-grid" x1={insetLeft} x2={width - marginLeft - marginRight} />
 					{/if}
-					<text x="-{marginLeft}" y="5">{tick + yFormat}</text>
+					<text x="-{marginLeft}" y="5">{yFormat(tick)}</text>
 				</g>
 			{/each}
 			<text x="-{marginLeft}" y={marginTop - 10}>{yLabel}</text>
@@ -206,7 +206,7 @@
 					{#if verticalGrid}
 						<line class="tick-grid" y2={-height + 70} />
 					{/if}
-					<text font-size="8px" x={-marginLeft / 4} y="20">{xTicksFormatted[i] + xFormat}</text>
+					<text font-size="8px" x={-marginLeft / 4} y="20">{xFormat(xTicksFormatted[i])}</text>
 				</g>
 			{/each}
 			<text x={width - marginLeft - marginRight - 40} y={marginBottom}>{xLabel}</text>
@@ -233,7 +233,7 @@
 			12}px; pointer-events:none; background-color:{tooltipBackground}; color:{tooltipTextColor}"
 	>
 		{subsets ? subsets[points[dotInfo[1]].color] : ''}:
-		{points[dotInfo[1]].x.getFullYear()}: {points[dotInfo[1]].y.toFixed(2)}{yFormat}
+		{points[dotInfo[1]].x.getFullYear()}: {yFormat(points[dotInfo[1]].y)}
 	</div>
 {/if}
 
