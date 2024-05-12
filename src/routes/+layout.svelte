@@ -1,8 +1,12 @@
-<script>
+<script lang="ts">
 	import '../app.postcss';
 
-	import { AppShell } from '@skeletonlabs/skeleton';
+	import { AppShell, initializeStores, Modal } from '@skeletonlabs/skeleton';
+
+	initializeStores();
 </script>
+
+<Modal />
 
 <AppShell slotPageContent="flex flex-col items-center mt-24" slotPageFooter="mt-24 mx-3 mb-3">
 	<slot />
