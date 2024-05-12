@@ -223,6 +223,7 @@
 			/>
 		{/each}
 	</svg>
+	<div class="cursor-pointer text-center text-xs">Click to edit properties</div>
 </div>
 <!-- Tooltip -->
 {#if dotInfo}
