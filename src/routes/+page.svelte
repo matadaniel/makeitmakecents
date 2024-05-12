@@ -73,7 +73,7 @@
 
 <form
 	use:form
-	class="w-96 mt-8 p-5 grid grid-cols-1 gap-14 border-token rounded-container-token border-primary-500"
+	class="mt-8 grid w-96 grid-cols-1 gap-14 border-primary-500 p-5 border-token rounded-container-token"
 >
 	<NumInput
 		inputAttributes={{ id: 'expenses', required: true }}
@@ -82,7 +82,7 @@
 	>
 		{#if typeof value === 'number'}<span
 				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
-			>{:else}<div class="placeholder w-24 mb-2 animate-pulse" />{/if}
+			>{:else}<div class="placeholder mb-2 w-24 animate-pulse" />{/if}
 	</NumInput>
 
 	<NumInput
@@ -92,13 +92,13 @@
 	>
 		{#if typeof value === 'number'}<span
 				>{value.toLocaleString(undefined, { style: 'currency', currency: $currency })}</span
-			>{:else}<div class="placeholder w-24 mb-2 animate-pulse" />{/if}
+			>{:else}<div class="placeholder mb-2 w-24 animate-pulse" />{/if}
 	</NumInput>
 
-	<button class="btn btn-filled-primary">Submit</button>
+	<button class="btn-filled-primary btn">Submit</button>
 </form>
 
-<div class="card flex flex-col items-center my-16 p-4">
+<div class="card my-16 flex flex-col items-center p-4">
 	{#key data}
 		{#if data}
 			{@const months = data[0].data.length - 1}
@@ -120,7 +120,7 @@
 				<small>Extrapolated from historical data.</small>
 			</footer>
 		{:else}
-			<div class="placeholder w-[600px] h-[503px] animate-pulse" />
+			<div class="placeholder h-[503px] w-[600px] animate-pulse" />
 		{/if}
 	{/key}
 </div>
