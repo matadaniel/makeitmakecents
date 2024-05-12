@@ -116,7 +116,7 @@
 	const yTicks = niceY.ticks(yScalefactor);
 </script>
 
-<div class="chart-container">
+<div class="chart-container" on:click>
 	<svg
 		{width}
 		{height}
