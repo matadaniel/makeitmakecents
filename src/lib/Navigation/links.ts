@@ -1,4 +1,4 @@
 export const links = [
 	['/waiting-cost', 'The cost of waiting'],
-	['/', 'Lump Sum']
+	['/windfall-wizard', 'Windfall wizard']
 ];
