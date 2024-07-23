@@ -1,17 +1,50 @@
 <script lang="ts">
 	import '../app.postcss';
 
-	import { AppShell, initializeStores, Modal } from '@skeletonlabs/skeleton';
+	import Navigation from '$lib/Navigation/Navigation.svelte';
+	import {
+		AppShell,
+		Drawer,
+		Modal,
+		getDrawerStore,
+		initializeStores
+	} from '@skeletonlabs/skeleton';
 
 	initializeStores();
+
+	const drawerStore = getDrawerStore();
+
+	function drawerOpen(): void {
+		drawerStore.open({ width: 'w-1/2' });
+	}
 </script>
 
 <Modal />
 
+<Drawer>
+	<Navigation />
+</Drawer>
+
 <AppShell
+	slotSidebarLeft="bg-surface-500/5 w-0 lg:w-64"
 	slotPageContent="flex flex-col items-center mt-24 min-h-screen shrink-0"
 	slotPageFooter="mt-24 mx-3 mb-3"
 >
+	<svelte:fragment slot="sidebarLeft">
+		<div class="absolute flex items-center bg-surface-500 lg:hidden">
+			<button class="btn btn-sm" on:click={drawerOpen}>
+				<span>
+					<svg viewBox="0 0 100 80" class="fill-token h-4 w-4">
+						<rect width="100" height="20" />
+						<rect y="30" width="100" height="20" />
+						<rect y="60" width="100" height="20" />
+					</svg>
+				</span>
+			</button>
+		</div>
+		<Navigation />
+	</svelte:fragment>
+
 	<slot />
 
 	<svelte:fragment slot="pageFooter">
