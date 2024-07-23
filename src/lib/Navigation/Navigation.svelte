@@ -1,16 +1,12 @@
 <script lang="ts">
 	import { getDrawerStore } from '@skeletonlabs/skeleton';
+	import { links } from './links';
 
 	const drawerStore = getDrawerStore();
 
 	function drawerClose(): void {
 		drawerStore.close();
 	}
-
-	const links = [
-		['/waiting-cost', 'The cost of waiting'],
-		['/', 'Lump Sum']
-	];
 
 	const modules = import.meta.glob('/src/routes/**/+page.svelte');
 	const routes = Object.keys(modules).map((k) => k.substring(11, k.length - 13) || '/');
