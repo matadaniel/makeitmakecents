@@ -1,38 +1,41 @@
-# create-svelte
+# makeitmakecents
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Financial education content that is easy to understand.
 
-## Creating a project
+## 💡 Motivation
 
-If you're seeing this, you've probably already done this step. Congrats!
+[The 2024 TIAA Institute-GFLEC Personal Finance Index](https://gflec.org/wp-content/uploads/2024/04/TIAA_GFLEC_Report_PFin_April2024_07.pdf)
+assessed financial literacy among U.S. adults.
+On average, only 48% of the questions were answered correctly.
+In particular, 71% of Gen Z correctly answered only half or fewer of the questions.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+I want to help increase financial literacy among my peers with this website.
 
-# create a new project in my-app
-npm create svelte@latest my-app
+## 🚀 Quick Start
+
+Visit makeitmakecents.org
+
+## 🤝 Contributing
+
+### Clone the repo
+
+```shell
+git clone https://github.com/matadaniel/makeitmakecents.git
+cd makeitmakecents
 ```
 
-## Developing
+### Install dependencies
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```shell
+pnpm install
 ```
 
-## Building
+### Start development server
 
-To create a production version of your app:
-
-```bash
-npm run build
+```shell
+pnpm run dev
 ```
 
-You can preview the production build with `npm run preview`.
+### Submit a pull request
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+If you'd like to contribute, please fork the repository and open a pull request.
