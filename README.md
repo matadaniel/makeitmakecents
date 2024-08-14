@@ -13,7 +13,7 @@ I want to help increase financial literacy among my peers with this website.
 
 ## 🚀 Quick Start
 
-Visit makeitmakecents.org
+Visit <https://makeitmakecents.org>
 
 ## 🤝 Contributing
 
